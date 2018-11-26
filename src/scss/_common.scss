@@ -1,0 +1,32 @@
+body{
+	color: $default-color;
+	padding-top: 170px;
+}
+a{
+	color: $default-color;
+	&:hover{
+		text-decoration: none;
+	}	
+}
+figure{
+	margin-bottom: 0;
+}
+.title{
+	text-transform: uppercase;
+}
+
+.v-all-btn-mob{
+    margin: auto;
+    display: block;
+    margin-top: 20px;
+}
+
+.sec-wrapper{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.bg-img{
+	background-size: cover;
+	background-position: center center;
+}

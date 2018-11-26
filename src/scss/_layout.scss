@@ -1,0 +1,40 @@
+html, body{
+	//overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+	&.no-scroll{
+		overflow: hidden;
+	}
+}
+
+#main-wrapper
+{
+	//height: 100vh;
+	//overflow: auto;
+	//position: relative;
+	//z-index: 1;
+	#main-header{
+		z-index: 99;
+		+ main{
+			padding-top: 170px;
+		}
+	}
+}
+
+// After scrolled layout
+#main-header,#main-header .logo{
+	transition: ease 0.3s;
+
+}
+.scrolled{
+	#main-header
+	{
+        .logo{
+        	max-width: 100px;
+        }
+        box-shadow: 0 1px 10px 0px fade-out(#000, 0.5);
+	}
+}

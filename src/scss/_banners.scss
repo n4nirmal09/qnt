@@ -1,0 +1,55 @@
+.slider-wrapper{
+	position: relative;
+}
+.slider{
+	margin-bottom: 0;
+}
+
+.main-banner{	
+	.slides{
+		padding-top: 55px;
+	    height: 450px;
+	    background-size: cover;
+	    background-position: center center;
+	}
+	.slick-dots{
+		text-align: right;
+    	padding-right: 25px;
+    	bottom: 30px;
+	}
+	.social-icons{
+		position: absolute;
+		bottom: 30px;
+	}
+}
+
+.recruit-btn{
+	position: fixed;
+	right: 30px;
+	top: 50%;
+	z-index: 2;
+	.btn{
+		width:90px;
+		height: 90px;
+		border-radius: 50%;
+	    white-space: normal;
+	    font-size: 12px;
+	    line-height: 11px;
+    	//box-shadow: 0 0 0 6px fade-out(theme-color('secondary'),0.2), 0 0 0 12px fade-out(theme-color('secondary'),0.8);
+    	animation: ripple-btn linear 2s infinite;
+	}
+}
+
+@keyframes ripple-btn{
+	0%{
+		box-shadow: 0 0 0 0px fade-out(theme-color('secondary'),0), 0 0 0 0px fade-out(theme-color('secondary'),0);
+	}
+	50%{
+		box-shadow: 0 0 0 6px fade-out(theme-color('secondary'),0.2), 0 0 0 12px fade-out(theme-color('secondary'),0.8);
+	}
+
+	
+	100%{
+		box-shadow: 0 0 0 16px fade-out(theme-color('secondary'),1), 0 0 0 24px fade-out(theme-color('secondary'),1);
+	}
+}

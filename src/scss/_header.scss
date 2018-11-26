@@ -1,0 +1,106 @@
+#main-header{
+	padding: 15px 0;
+	position: fixed;
+    top: 0;
+    width: 100%;
+    left: 0;
+    
+    background-color: $white;
+    .logo{
+    	max-width: 180px;
+    }
+}
+
+.menu-top{
+	display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    .search{
+    	border: none;
+    	background: none;
+    	cursor: pointer;
+    }
+    .language-switch{
+    	cursor: pointer;
+    }
+}
+
+.mobile-toggle-button{
+	display: none;
+}
+
+.main-menu{
+	margin-top: -46px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	ul{
+		display: flex;
+		margin: 0;
+		li:not(:last-child){
+			margin-right: 5px;
+		}
+		a{
+			padding: 5px 10px;
+			display: inline-block;
+		}
+	}
+}
+
+.mobile-toggle-button{
+	cursor: pointer;
+	position: absolute;
+  // float: right;
+	width: 48px;
+	height: 30px;
+    right: 10px;
+    top: 44px;
+    z-index: 9;
+    /* border: 1px solid #d1d3d4; */
+		padding: 5px;
+		overflow: hidden;
+		// background: #ffffff;
+border-radius: 3px;
+}
+
+
+.mobile-toggle-button span{
+	position: absolute;
+	width: 35px;
+	display: block;
+	height: 4px;
+	background-color: $primary;
+	left: 5px;
+	transition: all .3s ease;
+	border-radius: 20px;
+}
+
+.mobile-toggle-button.act-menu span{
+	transition: top .2s ease 0s, transform .4s ease .2s;
+}
+
+.mobile-toggle-button span:first-child{
+	top: 7px;
+}
+
+.mobile-toggle-button span:nth-child(2){
+	top: 15px;
+}
+
+.mobile-toggle-button span:nth-child(3){
+	top: 23px;
+}
+
+.mobile-toggle-button.act-menu span:first-child{
+	top: 14px;
+	transform: rotate(45deg);
+}
+
+.mobile-toggle-button.act-menu span:nth-child(2){
+	transform: translateX(60px);
+}
+
+.mobile-toggle-button.act-menu span:nth-child(3){
+	top: 14px;
+	transform: rotate(-45deg);
+}

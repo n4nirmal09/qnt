@@ -1,0 +1,172 @@
+
+// xs: 0,
+// sm: 480px,
+// md: 1024px,
+// lg: 1200px
+    // @include media-breakpoint-up(sm) {
+    // }
+    // @include media-breakpoint-down(md) {
+    // }
+
+@include media-breakpoint-down(md) {
+	body{
+		padding-top: 96px;
+	}
+
+	.mobile-toggle-button{
+		display: block;
+	}
+	.logo{
+		width: 100px;
+	}
+    .main-menu{
+    	margin: 0;
+    	position: fixed;
+	    display: block;
+		background: rgba(0, 0, 0, 0.89);
+	    top: 0;
+	    transition: all .5s ease;
+	    right: -100%;
+	    height: 100vh;
+	    width: 300px;
+		padding: 25px;
+		padding-top: 55px;
+
+	    & > ul{
+	    	display: block;
+	    }
+    }
+    .show-menu{
+    	.main-menu{
+    		right: 0;
+    	}
+    }
+
+    .recruit-btn{
+    	right: 25px;
+    }
+
+    .bg-img{
+    	background-position: right center;
+    }
+    .who-we-are .content{
+    	padding-left: 30px;
+    }
+
+    .what-we-do{
+    	figure{
+    		display: none;
+    	}
+    	.content-block{
+    		width: 100%;
+    		&.left-block{
+    			padding: 60px;
+    			margin-bottom: 15px;
+    			&::before{
+    				content: none;
+    			}
+    		}
+    		&.top-block{
+				position: static;
+				transform: none;
+    		}
+    	}
+    }
+
+    .chat{
+    	height: auto;
+    	padding: 50px 0;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+	.footer-menu-wrp{
+		display: block;
+	}
+	.footer-subscribe-sec{
+		margin: auto;
+		text-align: center;
+		.social-icons{
+			justify-content: center;
+		}
+	}
+
+	.main-banner{
+		.container{
+			padding: 0;
+		}
+		.slides{
+			position: relative;
+			color: #fff;
+			display: flex !important;
+			padding: 0;
+			& > div{
+			    width: 80%;
+			    margin: auto;
+			    text-align: center;
+			}
+			&::before{
+				content: "";
+			    position: absolute;
+			    top: 0;
+			    left: 0;
+			    width: 100%;
+			    height: 100%;
+			    background: rgba(121,15,49,.9);
+			}
+		}
+		.slick-dots{
+			display: none;
+		}
+		.social-icons{
+			left: 0;
+			right: 0;
+			justify-content: center;
+		}
+	}
+
+	.who-we-are{
+		.bg-img{
+			height: 250px;
+			margin-bottom: 20px;
+		}
+		.btn{
+			float: none;
+			margin: auto;
+			display: block;
+		}
+	}
+
+	.chat{
+		.ch-txt{
+			width: calc(100% - 50px);
+		}
+		figure{
+			position: relative;
+		}
+		.ch-qnta figure{
+			right: -7px;
+		}
+		.ch-usr figure{
+			left: -7px;
+		}
+	}
+
+	.gallery {
+		.slide-img-wrap{
+			height: 322px;
+		}
+	}
+
+	.events{
+		.events-list-wrapper:first-child{
+			margin-bottom: 20px;
+		}
+		.date{
+			width: 78px;
+		}
+		.event-body{
+			flex: 1;
+		}
+	}
+}

@@ -1,0 +1,22 @@
+@import "./base/variables",
+		"./base/mixins";
+
+/* Vendors */
+@import "./vendors/bootstrap/bootstrap",
+		"./vendors/slick";
+
+
+
+ @import "./typ",
+ 		 "./buttons",
+ 		 "./common",
+ 		 "./layout",
+ 		 "./main-loader",
+ 		 "./animations",
+ 		 "./banners",
+ 		 "./components",
+ 		 "./footer",
+ 		 "./header",
+ 		 "./responsive",
+ 		 "./utilities";
+

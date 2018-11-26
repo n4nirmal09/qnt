@@ -1,0 +1,38 @@
+.footer-menu-wrp{
+	display: flex;
+	justify-content: space-between;
+	padding: 50px 0;
+}
+
+.footer-menu{
+	display: flex;
+	& > ul{
+		margin-right: 40px;
+	}
+}
+
+.footer-subscribe-sec{
+	width: 300px;
+    text-align: right;
+    .footer-title{
+    	text-align: left;
+    }
+	input{
+		border: none;
+		background: $input-bg;
+	}
+	.btn{
+		border-radius: 0;
+		height: 40px;
+    	width: 40px;
+	}
+	.social-icons{
+		justify-content: flex-end;
+	}
+}
+
+
+.footer-copyright{
+	padding: 30px 0;
+	border-top: 1px solid $border-light; 
+}
