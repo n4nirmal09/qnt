@@ -76,7 +76,7 @@ const paths = {
 
 // Clean Dist Directory
 gulp.task("clean", [], () => {
-  console.log("Clean all files in dist folder");
+  
   return gulp.src("dist/*", { read: false }).pipe(clean());
 });
 
@@ -111,12 +111,9 @@ gulp.task('vendors-js', function() {
     gulp.src(`${dirs.src}/js/vendors/modernizr.js`),
     gulp.src(`${dirs.src}/js/vendors/jquery-3.3.1.js`),
     gulp.src(`${dirs.src}/js/vendors/greensock/TweenMax.js`),
-    gulp.src(`${dirs.src}/js/vendors/greensock/plugins/DrawSVGPlugin.js`),
-    gulp.src(`${dirs.src}/js/vendors/greensock/plugins/MorphSVGPlugin.js`),
     gulp.src(`${dirs.src}/js/vendors/scrollmagic/ScrollMagic.js`),
     gulp.src(`${dirs.src}/js/vendors/scrollmagic/plugins/animation.gsap.js`),
-    gulp.src(`${dirs.src}/js/vendors/slick.js`),
-    gulp.src(`${dirs.src}/js/vendors/jquery.easeScroll.js`)
+    gulp.src(`${dirs.src}/js/vendors/slick.js`)
 
        //gulp.src('dev/lib/modernizr.custom.min.js'), 
        //gulp.src('dev/lib/jquery-2.1.1.min.js'),
@@ -140,7 +137,7 @@ gulp.task('vendors-js', function() {
        
    )
    .pipe(concat('vendors.js'))
-   .pipe(uglify('vendors.js'))
+   .pipe(uglify())
    .pipe(gulp.dest(`${dirs.dest}/js/`));
 });
 

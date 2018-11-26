@@ -169,6 +169,8 @@ import "./utilities/smooth-scroll"
 
           },
           onComplete() {
+            
+            TweenLite.set($('#main-wrapper main,#main-wrapper #main-header,#main-loader'), {paddingRight: 0})
             $('body').removeClass('no-scroll')
           }
         })
@@ -188,8 +190,7 @@ import "./utilities/smooth-scroll"
         .to(mainLoader, 0.5, { scale: 1.5, autoAlpha: 0, display: 'none', ease: Power2.easeInOut },'ending-seq')
         .to($('#main-wrapper main,#main-wrapper #main-header,#main-wrapper #main-footer'), 0.5, { scale: 1, autoAlpha: 1, ease: Power2.easeInOut},'ending-seq+=0.3')
       
-      tl.seek(2)
-      tl.pause()
+      
     },
 
     // Scrollchecker
