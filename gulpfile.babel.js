@@ -137,7 +137,7 @@ gulp.task('vendors-js', function() {
        
    )
    .pipe(concat('vendors.js'))
-   .pipe(uglify())
+   //.pipe(uglify())
    .pipe(gulp.dest(`${dirs.dest}/js/`));
 });
 

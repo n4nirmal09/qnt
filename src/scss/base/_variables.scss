@@ -154,3 +154,9 @@ $theme-colors: map-merge((
 // $link-decoration:           none !default;
 // $link-hover-color:          darken($link-color, 15%) !default;
 // $link-hover-decoration:     underline !default;
+
+// Buttons
+
+$btn-border-radius: 30px; 
+$btn-border-radius-lg: 30px;
+$btn-border-radius-sm: 20px;

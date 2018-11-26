@@ -25,7 +25,7 @@ body{
 }
 
 // After scrolled layout
-#main-header,#main-header .logo{
+#main-header .header-inner,#main-header .logo{
 	transition: ease 0.3s;
 
 }
@@ -35,6 +35,11 @@ body{
         .logo{
         	max-width: 100px;
         }
-        box-shadow: 0 1px 10px 0px fade-out(#000, 0.5);
+        .header-inner
+        {
+        	background: #fff;
+        	box-shadow: 0 1px 10px 0px fade-out(#000, 0.5);
+        }
+        
 	}
 }

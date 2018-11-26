@@ -1,0 +1,33 @@
+.detect-animate{
+	opacity: 0;
+	visibility: hidden;
+}
+
+@keyframes animatedBackground {
+  from {
+    background-position: 0 0
+  }
+  to {
+    background-position: 100% 0
+  }
+}
+
+@keyframes moveArrowDown{
+  100%{
+    transform: translateY(10px)
+  }
+}
+
+@keyframes ripple-btn{
+	0%{
+		box-shadow: 0 0 0 0px fade-out(theme-color('secondary'),0), 0 0 0 0px fade-out(theme-color('secondary'),0);
+	}
+	50%{
+		box-shadow: 0 0 0 6px fade-out(theme-color('secondary'),0.2), 0 0 0 12px fade-out(theme-color('secondary'),0.8);
+	}
+
+	
+	100%{
+		box-shadow: 0 0 0 16px fade-out(theme-color('secondary'),1), 0 0 0 24px fade-out(theme-color('secondary'),1);
+	}
+}

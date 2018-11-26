@@ -1,4 +1,4 @@
-import "./utilities/smooth-scroll" 
+import "./utilities/smooth-scroll"
 
 (function($) {
 
@@ -17,8 +17,12 @@ import "./utilities/smooth-scroll"
       this.gallerySlider()
       this.testimonial()
       this.events()
+      this.lazyload()
+      this.parallaxBg()
       if ($('#main-loader').length) {
         this.mainLoaderAnimation()
+      } else {
+        this.detectAnimation()
       }
 
     },
@@ -60,7 +64,7 @@ import "./utilities/smooth-scroll"
       window.addEventListener('resize', resize)
     },
 
-    
+
     //Update scroll bar width
     scrollBarWidth() {
       var outer = document.createElement("div");
@@ -90,14 +94,17 @@ import "./utilities/smooth-scroll"
     },
     // Main menu toggler
     menuClick() {
-      $(".mobile-toggle-button").on("click", function() {
-        $(this).toggleClass("act-menu")
-        $("body").toggleClass("show-menu")
-      })
+      $(".mobile-toggle-button").on("click", this.toggleMainMenu)
+    },
+
+    // Toggle main menu
+    toggleMainMenu() {
+      $(".mobile-toggle-button").toggleClass("act-menu")
+      $("body").toggleClass("show-menu")
     },
 
 
-    // FUNCTIONS
+    // Sliders
     mainBanner() {
       $('.main-banner .slider').slick({
         slidesToShow: 1,
@@ -165,13 +172,14 @@ import "./utilities/smooth-scroll"
           delay: 0.2,
           onStart() {
             $('body').addClass('no-scroll')
-            TweenLite.set($('#main-wrapper main,#main-wrapper #main-header,#main-loader'), {paddingRight: S.scrollBarWidth})
+            TweenLite.set($('#main-wrapper main,#main-wrapper #main-header,#main-loader'), { paddingRight: S.scrollBarWidth })
 
           },
           onComplete() {
-            
-            TweenLite.set($('#main-wrapper main,#main-wrapper #main-header,#main-loader'), {paddingRight: 0})
+
+            TweenLite.set($('#main-wrapper main,#main-wrapper #main-header,#main-loader'), { paddingRight: 0 })
             $('body').removeClass('no-scroll')
+            Qobj.detectAnimation()
           }
         })
 
@@ -187,10 +195,10 @@ import "./utilities/smooth-scroll"
         .to(mainLoader.find('.hor-box'), 1, { scaleY: 0, ease: Power2.easeInOut }, 2)
         .to(mainLoader.find('.ver-box'), 1, { scaleX: 0, ease: Power2.easeInOut }, 2)
         //.to(mainLoader.find('.logo-holder'), 1, { autoAlpha: 0, ease: Power2.easeInOut }, 2)
-        .to(mainLoader, 0.5, { scale: 1.5, autoAlpha: 0, display: 'none', ease: Power2.easeInOut },'ending-seq')
-        .to($('#main-wrapper main,#main-wrapper #main-header,#main-wrapper #main-footer'), 0.5, { scale: 1, autoAlpha: 1, ease: Power2.easeInOut},'ending-seq+=0.3')
-      
-      
+        .to(mainLoader, 0.5, { autoAlpha: 0, display: 'none', ease: Power2.easeInOut }, 'ending-seq')
+        .to($('#main-wrapper main,#main-wrapper #main-header,#main-wrapper #main-footer'), 0.5, { autoAlpha: 1, ease: Power2.easeInOut }, 'ending-seq+=0.3')
+
+
     },
 
     // Scrollchecker
@@ -222,6 +230,194 @@ import "./utilities/smooth-scroll"
       window.addEventListener('DOMMouseScroll', scrollDirCheck);
 
     },
+
+    // Lazyloading images
+    lazyload: function() {
+      var controller = new ScrollMagic.Controller(),
+        mobBreak = 1024;
+
+      var processFigure = function(figure) {
+
+        var src = $(figure).data('src'),
+          mobSrc = $(figure).data('mob-src'),
+          loadingSrc = "";
+
+        if (mobSrc) {
+          if (s.windowWidth < mobBreak) {
+            loadingSrc = mobSrc
+          } else {
+            loadingSrc = src
+          }
+        } else {
+          loadingSrc = src
+        }
+        if (loadingSrc) {
+          var img = $("<img />").attr('src', loadingSrc)
+          if (img.complete) {
+            giveImage(loadingSrc);
+          } else {
+            img.on('load', function() {
+                giveImage(loadingSrc);
+              })
+              .on('error', function() {
+                // giveImage('assets/images/no-preview-available.png');
+              })
+          }
+        }
+
+
+
+        function giveImage(src) {
+          $(figure).css('background-image', 'url(' + src + ')');
+          $(figure).removeClass('preload_background')
+          $(figure).addClass('loaded');
+          //$(figure).data('src', '');
+        }
+      }
+
+
+
+      var $images = $('.lazyload-bg');
+
+      for (var i = 0; i < $images.length; i++) {
+
+        var scene = new ScrollMagic.Scene({ triggerElement: $images[i], triggerHook: 'onEnter' })
+          .on('enter', function() {
+            var triggerElem = this.triggerElement();
+            processFigure(triggerElem);
+            window.addEventListener('resize', function() {
+              processFigure(triggerElem)
+            })
+          })
+          .addTo(controller);
+
+      }
+    },
+
+    // detect animation on scroll
+    detectAnimation() {
+      var controller = new ScrollMagic.Controller();
+      var elem = $('.detect-animate');
+
+      elem.each(function() {
+        var elem = this;
+        var triggerElem = $(elem).data('top') ? $(elem).data('top') : elem;
+        var elementAnimation = $(elem).data('animation');
+        var delay = $(elem).data('delay') ? $(elem).data('delay') : 0;
+        var speed = $(elem).data('speed') ? $(elem).data('speed') : 1;
+        var hook = $(elem).data('hook') ? $(elem).data('hook') : 'onCenter';
+        var offset = -200;
+        var tween = '';
+        var duration = $(elem).data('scroll-hook-duration') ? $(elem).data('scroll-hook-duration') : 0;
+        var reverse = $(elem).data('reverse') ? true : false;
+        var staggerOffset = $(elem).data('stagger') ? $(elem).data('stagger') : 0.1;
+        var from = $(elem).data('from') ? $(elem).data('from') : 0
+        var to = $(elem).data('to') ? $(elem).data('to') : 0
+
+        TweenLite.set(elem, { autoAlpha: 1 });
+
+        switch (elementAnimation) {
+          case "fade-in":
+            tween = TweenMax.from(elem, speed, { autoAlpha: 0, ease: Ease.ease, delay: delay });
+            break;
+          case "from-top":
+            tween = TweenMax.from(elem, speed, { y: '-100px', opacity: 0, ease: Ease.ease, delay: delay });
+            break;
+          case "from-top-jerk":
+            tween = TweenMax.from(elem, speedspeed, { y: '-100px', opacity: 0, ease: Back.easeInOut, delay: delay });
+            break;
+          case "from-bottom":
+            tween = TweenMax.from(elem, speed, { y: '100px', opacity: 0, ease: Ease.ease, delay: delay });
+            break;
+          case "from-bottom-jerk":
+            tween = TweenMax.from(elem, speed, { y: '100px', opacity: 0, ease: Back.easeInOut, delay: delay });
+            break;
+          case "from-left":
+            tween = TweenMax.from(elem, speed, { x: '-100px', opacity: 0, ease: Ease.ease, delay: delay });
+            break;
+          case "from-left-jerk":
+            tween = TweenMax.from(elem, speed, { x: '-100px', opacity: 0, ease: Back.easeInOut, delay: delay });
+            break;
+          case "from-right":
+            tween = TweenMax.from(elem, speed, { x: '100px', opacity: 0, ease: Ease.ease, delay: delay });
+            break;
+          case "from-right-jerk":
+            tween = TweenMax.from(elem, speed, { x: '100px', opacity: 0, ease: Back.easeInOut, delay: delay });
+            break;
+          case "from-bottom-elements-lazy":
+            tween = TweenMax.staggerFrom($(elem).find('>*'), speed, { y: '100px', opacity: 0, ease: Ease.ease, delay: delay }, staggerOffset);
+            break;
+          case "from-bottom-elements-lazy-jerk":
+            tween = TweenMax.staggerFrom($(elem).find('>*'), speed, { y: '100px', opacity: 0, ease: Back.easeInOut, delay: delay }, staggerOffset);
+            break;
+          case "from-left-elements-lazy":
+            tween = TweenMax.staggerFrom($(elem).find('>*'), speed, { x: '-100px', opacity: 0, ease: Ease.ease, delay: delay }, staggerOffset);
+            break;
+          case "from-left-elements-lazy-jerk":
+            tween = TweenMax.staggerFrom($(elem).find('>*'), speed, { x: '-100px', opacity: 0, ease: Back.easeInOut, delay: delay }, staggerOffset);
+            break;
+          case "from-right-elements-lazy":
+            tween = TweenMax.staggerFrom($(elem).find('>*'), speed, { x: '100px', opacity: 0, ease: Ease.ease, delay: delay }, staggerOffset);
+            break;
+          case "from-right-elements-lazy-jerk":
+            tween = TweenMax.staggerFrom($(elem).find('>*'), speed, { x: '100px', opacity: 0, ease: Back.easeInOut, delay: delay }, staggerOffset);
+            break;
+          case "from-top-elements-lazy":
+            tween = TweenMax.staggerFrom($(elem).find('>*'), speed, { y: '-100px', opacity: 0, ease: Ease.ease, delay: delay }, staggerOffset);
+            break;
+          case "from-bottom-items-lazy":
+            tween = TweenMax.staggerFrom($(elem).find('.animate-item'), speed, { y: '100px', opacity: 0, ease: Ease.ease, delay: delay }, staggerOffset);
+            break;
+          case "from-bottom-items-lazy-jerk":
+            tween = TweenMax.staggerFrom($(elem).find('.animate-item'), speed, { y: '100px', opacity: 0, ease: Back.easeInOut, delay: delay }, staggerOffset);
+            break;
+          case "from-left-items-lazy":
+            tween = TweenMax.staggerFrom($(elem).find('.animate-item'), speed, { x: '-100px', opacity: 0, ease: Ease.ease, delay: delay }, staggerOffset);
+            break;
+          case "from-left-items-lazy-jerk":
+            tween = TweenMax.staggerFrom($(elem).find('.animate-item'), speed, { x: '-100px', opacity: 0, ease: Back.easeInOut, delay: delay }, staggerOffset);
+            break;
+          case "from-bottom-scroll":
+            tween = TweenMax.fromTo(elem, speed, {
+              y: from,
+              ease: Power0.easeNone,
+            }, {
+              y: to,
+              ease: Power0.easeNone,
+              delay: delay
+            });
+            break;
+          default:
+            tween = '';
+        };
+
+        new ScrollMagic.Scene({ triggerElement: triggerElem, triggerHook: hook, offset: offset, duration: duration, reverse: reverse })
+          .setTween(tween)
+          .addTo(controller);
+
+
+      })
+    },
+
+    parallaxBg () {
+      let pBg = $('.parallax-bg'),
+          controller = new ScrollMagic.Controller();
+
+      pBg.each(function(){
+        let elem = this,
+            duration = $(elem).data('duration') ? $(elem).data('duration') : '300%',
+            hook = $(elem).data('hook') ? $(elem).data('hook') : 'onEnter',
+            tween = null
+
+            tween = new TimelineMax()
+            tween = TweenMax.to(elem, 5, {y : 400, rotation:0.01, ease: Power0.easeNone})
+
+            new ScrollMagic.Scene({ triggerElement: elem, triggerHook: hook, duration: duration, reverse: true })
+            .setTween(tween)
+            .addTo(controller);
+      })
+
+    }
 
   }
 

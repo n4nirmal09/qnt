@@ -1,24 +1,42 @@
-<section class="what-we-do">
+<section class="what-we-do detect-animate" data-animation="fade-in">
+  <div class="background">
+    <div class="bg-image lazyload-bg preload_background parallax-bg"
+    data-src='/img/who-we-are1.png'></div>
+    <div class="mask bg-primary"></div>
+  </div>
   <div class="container">
-    <div class="content content-main col-lg-4">
+    <div class="content content-main col-lg-4 detect-animate" data-animation="from-bottom-elements-lazy">
       <h3 class="title">what we do</h3>
       <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit commodo ligula eget. Aenean commodo ligula eget dolor. Acommodo ligula eget Aenean massa.</p>
     </div>
     <div class="overlayed-sec row">
-      <div class="col-lg-6">
-        <div class="content content-block left-block clearfix">
+      <div class="col-lg-6 detect-animate" data-animation="from-bottom">
+        <div class="content content-block left-block clearfix detect-animate" data-animation="from-bottom-elements-lazy">
           <h3 class="title">Nannies workshop</h3>
           <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean consectetuer adipiscing elit massa.</p>
           <button class="btn btn-primary">Apply Now</button>
         </div>
       </div>
       <div class="col-lg-6">
-        <figure></figure>
-        <div class="content content-block top-block clearfix">
-          <h3 class="title">Nannies training</h3>
-          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean consectetuer adipiscing elit massa.</p>
-          <button class="btn btn-primary">Apply Now</button>
-        </div>
+        <figure class="detect-animate" data-animation="from-bottom-scroll"
+           data-scroll-hook-duration="400%"
+           data-hook="onEnter"
+           data-reverse="true"
+           data-from="50" 
+           data-to="-200">
+          <img src="./img/who-we-are1.png" class="img-fluid" alt="">
+        </figure>
+          <div class="content content-block top-block clearfix detect-animate" data-animation="from-bottom-scroll" data-scroll-hook-duration="300%"
+           data-hook="onEnter"
+           data-reverse="true"
+           data-from="100" 
+           data-to="-500">
+            <div class="detect-animate" data-animation="from-bottom-elements-lazy" data-hook="onEnter">
+              <h3 class="title">Nannies training</h3>
+              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean consectetuer adipiscing elit massa.</p>
+              <button class="btn btn-primary">Apply Now</button>
+            </div>
+          </div>
       </div>
     </div>
   </div>
