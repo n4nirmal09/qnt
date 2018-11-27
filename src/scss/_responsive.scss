@@ -49,8 +49,14 @@
     .bg-img{
     	background-position: right center;
     }
-    .who-we-are .content{
-    	padding-left: 30px;
+    .who-we-are{
+    	.content{
+	    	padding-left: 30px;
+	    }
+    	.bg-img{
+			height: 250px;
+			margin-bottom: 20px;
+		}
     }
 
     .what-we-do{
@@ -76,6 +82,16 @@
     .chat{
     	height: auto;
     	padding: 50px 0;
+    }
+
+    #main-wrapper #main-header+main{
+    	padding-top: 15px;
+    }
+
+    .main-banner{
+    	.slides{
+    		height: 450px;
+    	}
     }
 }
 
@@ -126,10 +142,10 @@
 	}
 
 	.who-we-are{
-		.bg-img{
-			height: 250px;
-			margin-bottom: 20px;
-		}
+		// .bg-img{
+		// 	height: 250px;
+		// 	margin-bottom: 20px;
+		// }
 		.btn{
 			float: none;
 			margin: auto;
@@ -168,5 +184,46 @@
 		.event-body{
 			flex: 1;
 		}
+		.events-slides{
+			figure{
+				display: none;
+				& + div{
+					max-width: 100%;
+				}
+			}
+		}
 	}
+
+	.menu-top{
+		.search-wrp{
+			position: static;
+			.search-fld{
+				position: absolute;
+				bottom: 8px;
+				width: 100%;
+				left: 0;
+				padding: 0 15px;
+			}
+			.search{
+				display: none;
+			}
+			input{
+
+			}
+		}
+	}
+	#main-header .header-inner{
+		padding-bottom: 50px;
+	}
+
+	.nanny-form {
+		padding: 35px 20px;
+		width: 380px;
+		.form-close{
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+	}
+
 }

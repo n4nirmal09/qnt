@@ -162,21 +162,37 @@
 	    height: 490px;
 	    background-size: cover;
 	    background-position: center center;
-	    &::before{
-	    	content: "";
-		    position: absolute;
-		    top: 0;
-		    left: 0;
-		    width: 100%;
-		    height: 100%;
-		    background: rgba(0, 0, 0, 0.3);
-	    }
-	    &:hover::before{
-	    	background: rgba(121,15,49,.9);
-	    }
-	    // &.darker-shade::before{
+	    // &::before{
+	    // 	content: "";
+		   //  position: absolute;
+		   //  top: 0;
+		   //  left: 0;
+		   //  width: 100%;
+		   //  height: 100%;
+		   //  background: rgba(0, 0, 0, 0.3);
+	    // }
+	    // &:hover::before{
 	    // 	background: rgba(121,15,49,.9);
 	    // }
+	    .mask{
+	    	transition: all .4s ease;
+	    }
+	    &:not(:hover){
+	    	.bg-image{
+			    filter: grayscale(100%);
+	    	}
+	    	.mask{
+	    		background-color: rgba(0, 0, 0, 0.3)!important;
+			    opacity: .3;
+	    	}
+		}
+		&:hover{
+			.slider-content{
+				& > p{
+					max-height: 140px;
+				}
+			}
+		}
 	}
 	.slider-content{
 		position: absolute;
@@ -186,9 +202,13 @@
 	    margin: auto;
 	    bottom: 14px;
 	    color: $white;
-	    p{
+	    & > p{
 	    	margin-top: 10px;
 	    	margin-bottom: 0;
+
+			max-height: 0;
+			overflow: hidden;
+			transition: all 1s ease;			
 	    }
 	    h4{
 	    	margin: 0;
@@ -233,8 +253,18 @@
 .events-slides{
 	margin-top: 50px;
 	display: flex;
-	.slides{
+	.slick-slide{
 		padding: 0 10px;
+		&:nth-child(2){
+			padding: 0;
+		}
+	}
+	.slides{
+		// padding: 0 10px;
+		position: relative;
+		&:hover .slider-content{
+			background-color: transparent;
+		}
 	}
 	.slides:nth-child(even){
 		padding: 0;
@@ -252,6 +282,7 @@
 			flex-direction: column;
 			justify-content: space-between;
 			color: $white; 
+			transition: all 1s ease;
 	}
 	.read-more{
 		align-self: flex-end;
@@ -316,5 +347,64 @@
 			margin-bottom: 10px;
 			margin-top: 10px;
 		}
+	}
+}
+
+// Nanny form
+.nanny-form{
+	background: $white;
+	padding: 35px;
+	position: fixed;
+	top: 0;
+	right: -100%;
+	z-index: 99;
+	width: 650px;
+	height: 100vh;
+	transition: all .8s ease;
+	.form-close{
+		height: auto;
+		width: auto;
+		min-width: auto;
+		background: no-repeat;
+		outline: none;
+		border: none;
+		box-shadow: none;
+		float: right;
+		i{
+			padding-right: 7px;
+		}
+	}
+	.form-wrapper{
+		max-width: 360px;
+		height: 100%;
+	}
+	.custom-file-label{
+		margin: 0;
+		max-width: 100%;
+		width: calc(100% - 30px);
+		left: 15px;
+		height: 31.5px;
+		&::after{		
+			background: #df9f9d;
+		    color: #fff;
+		    border-radius: 0;
+		}
+	}
+	.custom-file-input:lang(en)~.custom-file-label::after{
+		content: "UPLOAD";
+	}
+	form{
+		.btn{
+			float: right;
+		}
+	}
+
+	.spouse-detail{
+		margin-top: 30px;
+	}
+}
+.sh-form {
+	.nanny-form{
+		right: 0;
 	}
 }

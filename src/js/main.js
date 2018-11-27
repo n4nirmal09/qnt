@@ -13,6 +13,9 @@ import "./utilities/smooth-scroll"
       this.scrollDierectionChecker()
       this.scrollBarWidth()
       this.menuClick()
+      this.searchClick()
+      this.nannyFormClick()
+      this.formScroll()
       this.mainBanner()
       this.gallerySlider()
       this.testimonial()
@@ -97,10 +100,47 @@ import "./utilities/smooth-scroll"
       $(".mobile-toggle-button").on("click", this.toggleMainMenu)
     },
 
+    //menu search toggle
+    searchClick() {
+      $(".search").on("click", function (e) {
+        $(this).closest(".search-wrp").toggleClass("sh-search")
+        return false
+        // e.stopPropagation()
+      }),
+
+      $(document).on("click", function(e) {
+        if ($(e.target).is(".search-fld input") === false) {
+          $(".search-wrp").removeClass("sh-search")
+        }
+      })
+    },
+
+
+    //nanny form
+    nannyFormClick() {
+      $(".recruit-btn").on("click", function () {
+        $("body").addClass("sh-form")
+      }),
+      $(".form-close").on("click", function () {
+        $("body").removeClass("sh-form")
+      })
+    },
+
     // Toggle main menu
     toggleMainMenu() {
       $(".mobile-toggle-button").toggleClass("act-menu")
       $("body").toggleClass("show-menu")
+    },
+
+    //form scroll
+    formScroll() {
+       $(".form-wrapper").mCustomScrollbar({
+        theme : "dark-thin",
+        scrollButtons:{ enable: true },
+         advanced:{
+            autoScrollOnFocus: false,
+          }
+        })
     },
 
 
