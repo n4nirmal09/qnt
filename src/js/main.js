@@ -354,66 +354,67 @@ import "./utilities/smooth-scroll"
         var staggerOffset = $(elem).data('stagger') ? $(elem).data('stagger') : 0.1;
         var from = $(elem).data('from') ? $(elem).data('from') : 0
         var to = $(elem).data('to') ? $(elem).data('to') : 0
+        var ease = Power1.easeOut
 
         TweenLite.set(elem, { autoAlpha: 1 });
 
         switch (elementAnimation) {
           case "fade-in":
-            tween = TweenMax.from(elem, speed, { autoAlpha: 0, ease: Ease.ease, delay: delay });
+            tween = TweenMax.from(elem, speed, { autoAlpha: 0, ease: ease, delay: delay });
             break;
           case "from-top":
-            tween = TweenMax.from(elem, speed, { y: '-100px', opacity: 0, ease: Ease.ease, delay: delay });
+            tween = TweenMax.from(elem, speed, { y: '-100px', opacity: 0, ease: ease, delay: delay });
             break;
           case "from-top-jerk":
             tween = TweenMax.from(elem, speedspeed, { y: '-100px', opacity: 0, ease: Back.easeInOut, delay: delay });
             break;
           case "from-bottom":
-            tween = TweenMax.from(elem, speed, { y: '100px', opacity: 0, ease: Ease.ease, delay: delay });
+            tween = TweenMax.from(elem, speed, { y: '100px', opacity: 0, ease: ease, delay: delay });
             break;
           case "from-bottom-jerk":
             tween = TweenMax.from(elem, speed, { y: '100px', opacity: 0, ease: Back.easeInOut, delay: delay });
             break;
           case "from-left":
-            tween = TweenMax.from(elem, speed, { x: '-100px', opacity: 0, ease: Ease.ease, delay: delay });
+            tween = TweenMax.from(elem, speed, { x: '-100px', opacity: 0, ease: ease, delay: delay });
             break;
           case "from-left-jerk":
             tween = TweenMax.from(elem, speed, { x: '-100px', opacity: 0, ease: Back.easeInOut, delay: delay });
             break;
           case "from-right":
-            tween = TweenMax.from(elem, speed, { x: '100px', opacity: 0, ease: Ease.ease, delay: delay });
+            tween = TweenMax.from(elem, speed, { x: '100px', opacity: 0, ease: ease, delay: delay });
             break;
           case "from-right-jerk":
             tween = TweenMax.from(elem, speed, { x: '100px', opacity: 0, ease: Back.easeInOut, delay: delay });
             break;
           case "from-bottom-elements-lazy":
-            tween = TweenMax.staggerFrom($(elem).find('>*'), speed, { y: '100px', opacity: 0, ease: Ease.ease, delay: delay }, staggerOffset);
+            tween = TweenMax.staggerFrom($(elem).find('>*'), speed, { y: '100px', opacity: 0, ease: ease, delay: delay }, staggerOffset);
             break;
           case "from-bottom-elements-lazy-jerk":
             tween = TweenMax.staggerFrom($(elem).find('>*'), speed, { y: '100px', opacity: 0, ease: Back.easeInOut, delay: delay }, staggerOffset);
             break;
           case "from-left-elements-lazy":
-            tween = TweenMax.staggerFrom($(elem).find('>*'), speed, { x: '-100px', opacity: 0, ease: Ease.ease, delay: delay }, staggerOffset);
+            tween = TweenMax.staggerFrom($(elem).find('>*'), speed, { x: '-100px', opacity: 0, ease: ease, delay: delay }, staggerOffset);
             break;
           case "from-left-elements-lazy-jerk":
             tween = TweenMax.staggerFrom($(elem).find('>*'), speed, { x: '-100px', opacity: 0, ease: Back.easeInOut, delay: delay }, staggerOffset);
             break;
           case "from-right-elements-lazy":
-            tween = TweenMax.staggerFrom($(elem).find('>*'), speed, { x: '100px', opacity: 0, ease: Ease.ease, delay: delay }, staggerOffset);
+            tween = TweenMax.staggerFrom($(elem).find('>*'), speed, { x: '100px', opacity: 0, ease: ease, delay: delay }, staggerOffset);
             break;
           case "from-right-elements-lazy-jerk":
             tween = TweenMax.staggerFrom($(elem).find('>*'), speed, { x: '100px', opacity: 0, ease: Back.easeInOut, delay: delay }, staggerOffset);
             break;
           case "from-top-elements-lazy":
-            tween = TweenMax.staggerFrom($(elem).find('>*'), speed, { y: '-100px', opacity: 0, ease: Ease.ease, delay: delay }, staggerOffset);
+            tween = TweenMax.staggerFrom($(elem).find('>*'), speed, { y: '-100px', opacity: 0, ease: ease, delay: delay }, staggerOffset);
             break;
           case "from-bottom-items-lazy":
-            tween = TweenMax.staggerFrom($(elem).find('.animate-item'), speed, { y: '100px', opacity: 0, ease: Ease.ease, delay: delay }, staggerOffset);
+            tween = TweenMax.staggerFrom($(elem).find('.animate-item'), speed, { y: '100px', opacity: 0, ease: ease, delay: delay }, staggerOffset);
             break;
           case "from-bottom-items-lazy-jerk":
             tween = TweenMax.staggerFrom($(elem).find('.animate-item'), speed, { y: '100px', opacity: 0, ease: Back.easeInOut, delay: delay }, staggerOffset);
             break;
           case "from-left-items-lazy":
-            tween = TweenMax.staggerFrom($(elem).find('.animate-item'), speed, { x: '-100px', opacity: 0, ease: Ease.ease, delay: delay }, staggerOffset);
+            tween = TweenMax.staggerFrom($(elem).find('.animate-item'), speed, { x: '-100px', opacity: 0, ease: ease, delay: delay }, staggerOffset);
             break;
           case "from-left-items-lazy-jerk":
             tween = TweenMax.staggerFrom($(elem).find('.animate-item'), speed, { x: '-100px', opacity: 0, ease: Back.easeInOut, delay: delay }, staggerOffset);
