@@ -156,12 +156,13 @@ import "./utilities/smooth-scroll"
 
     gallerySlider() {
       $('.gallery .slider').slick({
-        slidesToShow: 3,
+        slidesToShow: 2,
         slidesToScroll: 1,
         // asNavFor: '.slider-for',
         // dots: true,
         arrows: false,
         centerMode: true,
+        centerPadding: '15%',
         focusOnSelect: true,
         responsive: [{
           breakpoint: 1025,

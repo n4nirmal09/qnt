@@ -6,8 +6,12 @@
 }
 
 .main-banner{	
+	.container{
+		position: relative;
+	}
 	.slides{
-		padding: 20px 0;
+		// padding: 20px 0;
+		padding: 0;
 	    min-height: 450px;
 	    height: 70vh;
 	    background-size: cover;
@@ -21,6 +25,7 @@
 	    
 	}
 	.slick-dots{
+		position: absolute;
 		text-align: right;
     	padding-right: 25px;
     	bottom: 30px;

@@ -8,6 +8,17 @@
     // @include media-breakpoint-down(md) {
     // }
 
+    // @include media-breakpoint-up(sm){
+    // 	.who-we-are{
+    // 		.sm-screen{ 
+    // 			display: none !important; 
+    // 		}
+    // 		.lg-screen{
+    // 			display: block !important; 
+    // 		}
+    // 	}
+    // }
+
 @include media-breakpoint-down(md) {
 	body{
 		padding-top: 96px;
@@ -23,7 +34,7 @@
     	margin: 0;
     	position: fixed;
 	    display: block;
-		background: rgba(0, 0, 0, 0.89);
+		background: rgba(0, 0, 0, 0.95);
 	    top: 0;
 	    transition: all .5s ease;
 	    right: -100%;
@@ -53,10 +64,10 @@
     	.content{
 	    	padding-left: 30px;
 	    }
-    	.bg-img{
-			height: 250px;
-			margin-bottom: 20px;
-		}
+  //   	.bg-img{
+		// 	height: 250px;
+		// 	margin-bottom: 20px;
+		// }
     }
 
     .what-we-do{
@@ -142,10 +153,10 @@
 	}
 
 	.who-we-are{
-		// .bg-img{
-		// 	height: 250px;
-		// 	margin-bottom: 20px;
-		// }
+		.bg-img{
+			height: 250px;
+			margin-bottom: 20px;
+		}
 		.btn{
 			float: none;
 			margin: auto;
@@ -226,4 +237,16 @@
 		}
 	}
 
+}
+
+@include media-breakpoint-down(xs){
+	.nanny-form{
+		width: 320px;
+		padding-right: 0;
+		.form-group{
+			& > div:nth-child(2){
+				margin-top: 15px;
+			}
+		}
+	}
 }

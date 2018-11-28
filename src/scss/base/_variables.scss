@@ -34,7 +34,7 @@ $spacer: 1rem;
 // Font, line-height, and color for body text, headings, and more.
 
 // stylelint-disable value-keyword-case
-$font-family-sans-serif:      'Gotham', sans-serif;
+$font-family-sans-serif:      'Montserrat', sans-serif;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:            $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
@@ -128,7 +128,7 @@ $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         $white !default;
-$dark:          $gray-800 !default;
+$dark:          #7c6568 !default; 
 
 $theme-colors: () !default;
 $theme-colors: map-merge((
@@ -144,9 +144,11 @@ $theme-colors: map-merge((
 ), $theme-colors);
 
 
-// font colors
+
+// Settings for the `<body>` element.
+
 // $body-bg:                   $white !default;
-// $body-color:                $gray-900 !default;
+$body-color:                $dark !default;
 
 // Links
 //

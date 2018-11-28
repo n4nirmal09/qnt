@@ -1,9 +1,9 @@
 body{
-	color: $default-color;
+	// color: $default-color;
 	padding-top: 170px;
 }
 a{
-	color: $default-color;
+	color: $dark; 
 	&:hover{
 		text-decoration: none;
 	}	
