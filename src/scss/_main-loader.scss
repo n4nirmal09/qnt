@@ -7,12 +7,12 @@
 	height: 100%;
 	background: #fff;
     z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 	.logo-holder
 	{
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		transform: translateX(-50%) translateY(-50%);
+		
 	}
     
     .ver-box, .hor-box{
