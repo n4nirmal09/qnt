@@ -172,6 +172,15 @@ import "./utilities/smooth-scroll"
             centerPadding: '20%',
             slidesToShow: 1
           }
+        },
+        {
+          breakpoint: 567,
+          settings: {
+            initialSlide: 0,
+            centerMode: true,
+            centerPadding: '13%',
+            slidesToShow: 1
+          }
         }]
       })
     },
@@ -191,6 +200,15 @@ import "./utilities/smooth-scroll"
             initialSlide: 0,
             centerMode: true,
             centerPadding: '20%',
+            slidesToShow: 1
+          }
+        },
+         {
+          breakpoint: 567,
+          settings: {
+            initialSlide: 0,
+            centerMode: true,
+            centerPadding: '13%',
             slidesToShow: 1
           }
         }]

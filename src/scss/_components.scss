@@ -256,7 +256,9 @@
 	.slick-slide{
 		padding: 0 10px;
 		&:nth-child(2){
-			padding: 0;
+			@include media-breakpoint-up(lg) {
+				padding: 0;
+			}
 		}
 	}
 	.slides{
@@ -267,7 +269,9 @@
 		}
 	}
 	.slides:nth-child(even){
-		padding: 0;
+		@include media-breakpoint-up(lg) {
+			padding: 0;
+		}
 	}
 	figure{
 		height: 330px;

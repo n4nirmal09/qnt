@@ -36,3 +36,14 @@ figure{
 	background-size: cover;
 	background-position: center center;
 }
+
+.slick-dots {
+	li {
+		button{
+			&:before{
+				font-size: 40px;
+				font-family: sans-serif;
+			}
+		}
+	}
+}

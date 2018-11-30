@@ -20,6 +20,9 @@
     // }
 
 @include media-breakpoint-down(md) {
+	.detect-animate{
+		transform: none !important;
+	}
 	body{
 		padding-top: 96px;
 	}
@@ -45,6 +48,10 @@
 
 	    & > ul{
 	    	display: block;
+	    }
+
+	    a{
+	    	color: $white;
 	    }
     }
     .show-menu{
@@ -77,8 +84,8 @@
     	.content-block{
     		width: 100%;
     		&.left-block{
-    			padding: 60px;
-    			margin-bottom: 15px;
+    			padding: 55px;
+    			margin-bottom: 25px;
     			&::before{
     				content: none;
     			}
@@ -127,7 +134,7 @@
 			color: #fff;
 			display: flex !important;
 			padding: 0;
-			& > div{
+			&  .row{
 			    width: 80%;
 			    margin: auto;
 			    text-align: center;
@@ -143,13 +150,17 @@
 			}
 		}
 		.slick-dots{
-			display: none;
+			display: none !important;
 		}
 		.social-icons{
 			left: 0;
 			right: 0;
 			justify-content: center;
 		}
+	}
+
+	.what-we-do .content-block.left-block{
+		padding: 40px 30px;
 	}
 
 	.who-we-are{
@@ -183,6 +194,9 @@
 		.slide-img-wrap{
 			height: 322px;
 		}
+		.slides{
+			padding: 0 10px;
+		}
 	}
 
 	.events{
@@ -202,6 +216,10 @@
 					max-width: 100%;
 				}
 			}
+		}
+		.events-list-wrapper .btn{
+			max-width: 130px;
+			    min-width: auto;
 		}
 	}
 
@@ -241,12 +259,20 @@
 
 @include media-breakpoint-down(xs){
 	.nanny-form{
-		width: 320px;
+		width: 290px;
 		padding-right: 0;
 		.form-group{
 			& > div:nth-child(2){
 				margin-top: 15px;
 			}
 		}
+	}
+
+	.footer-subscribe-sec{
+		width: 250px;
+	}
+
+	.map .address-wrapper{
+		padding-left: 0;
 	}
 }
